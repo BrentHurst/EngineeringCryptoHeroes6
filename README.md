@@ -1,2 +1,1 @@
-# EngineeringCryptoHeroes6 
-Hello Flask Application 
+![ECH6 Logo](/assets/ECH6.png)
