@@ -11,5 +11,8 @@ rm:
 	@docker kill ech >/dev/null 2>/dev/null || true 
 	@docker rm ech >/dev/null 2>/dev/null || true 
 
+push:
+	docker push chrisdean258/ech6
+
 runlocal:
 	sh run_app.sh
