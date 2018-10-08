@@ -1,1 +1,3 @@
-# EngineeringCryptoHeroes6
+<p align="center">
+  <img src="/assets/ECH6.png">
+</p>
