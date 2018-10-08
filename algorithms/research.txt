@@ -1,0 +1,8 @@
+https://github.com/shobrook/BitVision: Very similar to what are trying to do, but only with bitcoins. 
+ 
+https://github.com/Gregory-Matthews/Bitcoin-Price-Predictor: Implemented linear model, polynomial regression model, and RNN. (Very accessible). 
+
+https://github.com/harishpuvvada/BitCoin-Value-Predictor: Use IBM Washton to sentiment analyze the news. 
+
+https://hackernoon.com/dont-be-fooled-deceptive-cryptocurrency-price-predictions-using-deep-learning-bf27e4837151: articles that help to explain why machine learning RNN may fail. 
+
