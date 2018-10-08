@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 import requests
 
 BitcoinPriceUrl = 'http://api.coindesk.com/v1/bpi/currentprice.json'
