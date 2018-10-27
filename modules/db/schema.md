@@ -1,7 +1,7 @@
 # Database Layout
 
 ## Coin
-### An identifier table for coins that are tradable
+#### An identifier table for coins that are tradable
 - ID (generated)
 - Coin Name
 
