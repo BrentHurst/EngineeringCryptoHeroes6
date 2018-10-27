@@ -1,0 +1,59 @@
+CREATE TABLE coins(
+	coinID PRIMARY KEY,
+	name TEXT NOT NULL
+);
+
+CREATE TABLE exchanges(
+	exchangeID PRIMARY KEY,
+	name TEXT NOT NULL
+);
+
+CREATE TABLE algorithms(
+	algorithmID PRIMARY KEY,
+	name TEXT NOT NULL,
+	agressiveness REAL
+);
+
+CREATE TABLE userData(
+	userID PRIMARY KEY,
+	name TEXT NOT NULL,
+	email TEXT NOT NULL,
+	salt TEXT NOT NULL,
+	password TEXT NOT NULL
+);
+
+CREATE TABLE cryptoData(
+	cryptoDataID PRIMARY KEY,
+	coinID INTEGER NOT NULL,
+	exchangeID INTEGER NOT NULL,
+	value REAL NOT NULL,
+	timestamp DATETIME NOT NULL,
+	FOREIGN KEY(coinID) REFERENCES coins(coinID),
+	FOREIGN KEY(exchangeID) REFERENCES exchange(exchangeID)
+);
+
+CREATE TABLE tradingPools(
+	tradingPoolID PRIMARY KEY,
+	algorithmID INTEGER NOT NULL,
+	agressiveness REAL,
+	value REAL NOT NULL,
+	FOREIGN KEY(algorithmID) REFERENCES algorithms(algorithmID)
+);
+
+CREATE TABLE tradingPoolCoinData(
+	tradingPoolCoinDataID PRIMARY KEY,
+	tradingPoolID INTEGER NOT NULL,
+	coinID INTEGER NOT NULL,
+	coinAmount INTEGER NOT NULL,
+	mOREIGN KEY(tradingPoolID) REFERENCES tradingPools(tradingPoolID),
+	FOREIGN KEY(coinID) REFERENCES coins(coinID)
+);
+
+CREATE TABLE tradingPoolUserData(
+	tradingPoolUserDataID PRIMARY KEY,
+	tradingPoolID INTEGER NOT NULL,
+	userID INTEGER NOT NULL,
+	amount REAL NOT NULL,
+	FOREIGN KEY(tradingPoolUserDataID) REFERENCES tradingPools(tradingPoolUserDataID),
+	FOREIGN KEY(userID) REFERENCES userData(userID)
+);
