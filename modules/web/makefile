@@ -12,6 +12,7 @@ rm:
 	@docker rm ech >/dev/null 2>/dev/null || true 
 
 push:
+	docker build --no-cache -t chrisdean258/ech6:latest .
 	docker push chrisdean258/ech6
 
 runlocal:
