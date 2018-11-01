@@ -57,3 +57,19 @@ CREATE TABLE tradingPoolUserData(
 	FOREIGN KEY(tradingPoolUserDataID) REFERENCES tradingPools(tradingPoolUserDataID),
 	FOREIGN KEY(userID) REFERENCES userData(userID)
 );
+
+CREATE TABLE trades(
+	tradeID PRIMARY KEY,
+	tradingPoolID INTEGER NOT NULL,
+	coinFrom INTEGER NOT NULL,
+	coinTo INTEGER NOT NULL,
+	amount REAL NOT NULL,
+	exchangeID INTEGER NOT NULL,
+	completed INTEGER NOT NULL,
+	FOREIGN KEY(tradingPoolID) REFERENCES tradingPools(tradingPoolID),
+	FOREIGN KEY(coinFrom) REFERENCES coins(coinID),
+	FOREIGN KEY(coinTo) REFERENCES coins(coinID),
+	FOREIGN KEY(exchangeID) REFERENCES exchanges(exchangeID)
+);
+
+	
