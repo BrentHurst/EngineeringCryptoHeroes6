@@ -29,4 +29,8 @@ class coindb():
         c = self.connection.cursor()
         c.execute("INSERT INTO coins VALUES (?)", coin_name)
 
+    def getCoinByID(self, coinID):
+        c = self.connection.cursor()
+        return c.execute("SELECT * FROM coins WHERE coinID=?", coinID)
+
 
