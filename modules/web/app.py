@@ -7,8 +7,8 @@ app = Flask(__name__, static_url_path='/static')
 @app.route('/')
 def index():
     print(os.getcwd())
-    return render_template("index.html")
+    return render_template("login.html")
 
-@app.route('/favicon.ico')
-def favicon():
-    return app.send_static_file("favicon.ico")
+@app.route('/<path>')
+def any(path):
+    return app.send_static_file(path)

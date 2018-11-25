@@ -45,7 +45,7 @@ CREATE TABLE tradingPoolCoinData(
 	tradingPoolID INTEGER NOT NULL,
 	coinID INTEGER NOT NULL,
 	coinAmount INTEGER NOT NULL,
-	mOREIGN KEY(tradingPoolID) REFERENCES tradingPools(tradingPoolID),
+	FOREIGN KEY(tradingPoolID) REFERENCES tradingPools(tradingPoolID),
 	FOREIGN KEY(coinID) REFERENCES coins(coinID)
 );
 
