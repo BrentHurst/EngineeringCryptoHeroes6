@@ -6,10 +6,17 @@ app = Flask(__name__, static_url_path='/static')
 
 @app.route('/')
 def index():
-    print(os.getcwd())
     return render_template("login.html")
 
-@app.route('/<path>')
+@app.route('/dashboard')
+def dashboard():
+    return render_template("dashboard.html")
+
+@app.route('/strategies')
+def strategies():
+    return render_template("strategies.html")
+
+@app.route('/<path:path>')
 def any(path):
     return app.send_static_file(path)
 

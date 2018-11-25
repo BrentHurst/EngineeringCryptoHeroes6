@@ -17,7 +17,8 @@ fi
 db/createDB.py
 
 cd web
-run_app.sh &
+echo $PWD
+./run_app.sh &
 cd ..
 
 while true; do
