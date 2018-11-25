@@ -28,17 +28,3 @@ class coindb():
 
     def cursor(self):
         return self.connection.cursor()
-
-    def addCoin(self, coin_name):
-        c = self.connection.cursor()
-        c.execute("INSERT INTO coins VALUES (?)", coin_name)
-
-    def getCoinByID(self, coinID):
-        c = self.connection.cursor()
-        return c.execute("SELECT * FROM coins WHERE coinID=?", coinID)
-
-    def getCoinIDByName(self, coinName):
-        c = self.connection.cursor()
-        rv = c.execute("SELECT * FROM coins WHERE name=?", coinName)
-        return rv
-

@@ -1,15 +1,5 @@
 # Database Layout
 
-## coins
-#### An identifier table for coins that are tradable
-- coinID (generated)
-- name
-
-## exchanges
-#### An identifier table for exchanges that are tradable
-- exchangeID (generated)
-- Exchange Name
-
 ## algorithms
 #### Just a table for algorithm references
 - ID (generated)
@@ -26,8 +16,8 @@
 ## cryptoData
 #### Stores Current Market State
 - ID (generated)
-- CoinID (Foreign Key in Coin table)
-- ExchangeID (Foreign Key in Exchange table)
+- CoinID (string)
+- ExchangeID (string)
 - Value (in $/coin)
 - Timestamp
 
@@ -42,7 +32,7 @@
 #### Keeps Track of Coin and USD amounts associated with each pool
 - ID (generated)
 - TradingPoolID (Foreign Key in TradingPools Table)
-- CoinID (Foreign Key in Coin table)
+- CoinID (string)
 - CoinAmount (Number of coins held in that pool)
 
 ## tradingPoolUserData
@@ -52,13 +42,12 @@
 - TradingPoolID (Foreign Key in TradingPools Table)
 - Amount (Percentage of pool owned)
 
-
 ## trades
 #### Stores information about caluculated and executed trades
 - ID (generated)
 - TradingPoolID (Foreign Key in TradingPools Table)
-- CoinFrom (Foreign Key in Coin Table)
-- CoinTo (Foreign Key in Coin Table)
+- CoinFrom (string)
+- CoinTo (string)
 - Amt (In $)
-- ExchangeID (Foreign Key in Exchange Table)
+- ExchangeID (string)
 - Completed (bit is 1 if completed)
