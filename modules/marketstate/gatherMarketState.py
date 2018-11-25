@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 
 from CurrentPrice import *
-from modules.db.database import *
+from db.database import *
 
 
 def gatherMarketState():
