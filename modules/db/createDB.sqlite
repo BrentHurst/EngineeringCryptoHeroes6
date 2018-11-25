@@ -26,7 +26,7 @@ CREATE TABLE tradingPools(
 CREATE TABLE tradingPoolCoinData(
 		tradingPoolID INTEGER NOT NULL,
 		coinID text NOT NULL,
-		coinAmount INTEGER NOT NULL
+		coinAmount REAL NOT NULL
 		);
 
 CREATE TABLE tradingPoolUserData(
