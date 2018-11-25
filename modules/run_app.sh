@@ -18,8 +18,6 @@ fi
 
 db/createDB.py
 
-exit
-
 cd web
 run_app.sh &
 cd ..

@@ -11,7 +11,6 @@ class coindb():
         return self
 
     def __exit__(self, type, value, traceback):
-        print(locals())
         self.connection.commit()
         self.connection.close()
         return True
