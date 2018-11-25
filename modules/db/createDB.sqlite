@@ -1,11 +1,11 @@
 CREATE TABLE algorithms(
-		algorithmID PRIMARY KEY,
+		algorithmID INT PRIMARY KEY,
 		name TEXT NOT NULL,
 		agressiveness REAL
 		);
 
 CREATE TABLE userData(
-		userID PRIMARY KEY,
+		userID INT PRIMARY KEY,
 		name TEXT NOT NULL,
 		email TEXT NOT NULL,
 		salt TEXT NOT NULL,
@@ -13,31 +13,31 @@ CREATE TABLE userData(
 		);
 
 CREATE TABLE cryptoData(
-		cryptoDataID PRIMARY KEY,
-		coinID varchar(10) NOT NULL,
-		exchangeID varchar(10) NOT NULL,
+		cryptoDataID INT PRIMARY KEY,
+		coinID text NOT NULL,
+		exchangeID text NOT NULL,
 		value REAL NOT NULL,
-		timestamp DATETIME NOT NULL,
+		timestamp DATETIME NOT NULL
 		);
 
 CREATE TABLE tradingPools(
-		tradingPoolID PRIMARY KEY,
+		tradingPoolID INT PRIMARY KEY,
 		algorithmID INTEGER NOT NULL,
 		agressiveness REAL,
 		value REAL NOT NULL,
 		FOREIGN KEY(algorithmID) REFERENCES algorithms(algorithmID)
 		);
 
-	CREATE TABLE tradingPoolCoinData(
-			tradingPoolCoinDataID PRIMARY KEY,
-			tradingPoolID INTEGER NOT NULL,
-			coinID varchar(10) NOT NULL,
-			coinAmount INTEGER NOT NULL,
-			FOREIGN KEY(tradingPoolID) REFERENCES tradingPools(tradingPoolID),
-			);
+CREATE TABLE tradingPoolCoinData(
+		tradingPoolCoinDataID INT PRIMARY KEY,
+		tradingPoolID INTEGER NOT NULL,
+		coinID text NOT NULL,
+		coinAmount INTEGER NOT NULL,
+		FOREIGN KEY(tradingPoolID) REFERENCES tradingPools(tradingPoolID)
+		);
 
 CREATE TABLE tradingPoolUserData(
-		tradingPoolUserDataID PRIMARY KEY,
+		tradingPoolUserDataID INT PRIMARY KEY,
 		tradingPoolID INTEGER NOT NULL,
 		userID INTEGER NOT NULL,
 		amount REAL NOT NULL,
@@ -45,13 +45,13 @@ CREATE TABLE tradingPoolUserData(
 		FOREIGN KEY(userID) REFERENCES userData(userID)
 		);
 
-	CREATE TABLE trades(
-			tradeID PRIMARY KEY,
-			tradingPoolID INTEGER NOT NULL,
-			coinFrom varchar(10) NOT NULL,
-			coinTo varchar(10) NOT NULL,
-			amount REAL NOT NULL,
-			exchangeID varchar(10) NOT NULL,
-			completed INTEGER NOT NULL,
-			FOREIGN KEY(tradingPoolID) REFERENCES tradingPools(tradingPoolID),
-			);
+CREATE TABLE trades(
+		tradeID INT PRIMARY KEY,
+		tradingPoolID INTEGER NOT NULL,
+		coinFrom text NOT NULL,
+		coinTo text NOT NULL,
+		amount REAL NOT NULL,
+		exchangeID text NOT NULL,
+		completed INTEGER NOT NULL,
+		FOREIGN KEY(tradingPoolID) REFERENCES tradingPools(tradingPoolID)
+		);
