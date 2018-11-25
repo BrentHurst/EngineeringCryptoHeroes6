@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-from CurrentPrice import *
+from marketstate.CurrentPrice import *
 from db.database import *
 
 
@@ -12,10 +12,9 @@ def gatherMarketState():
         for ex in exchanges:
             for sym in symbols:
                 symusd = sym + 'USD'
-
                 curprice = GetCurPrice(symusd,ex)
-
-                db.updateMarketState(sym,ex,curprice)
+                print(sym,ex,curprice)
+                # db.updateMarketState(sym,ex,curprice)
 
 if __name__ == "__main__":
     gatherMarketState()

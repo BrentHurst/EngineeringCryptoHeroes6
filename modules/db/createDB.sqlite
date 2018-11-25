@@ -14,10 +14,10 @@ CREATE TABLE userData(
 
 CREATE TABLE cryptoData(
 		cryptoDataID PRIMARY KEY,
-		coinID varchar(10) NOT NULL,
-		exchangeID varchar(10) NOT NULL,
+		coinID text NOT NULL,
+		exchangeID text NOT NULL,
 		value REAL NOT NULL,
-		timestamp DATETIME NOT NULL,
+		timestamp DATETIME NOT NULL
 		);
 
 CREATE TABLE tradingPools(
@@ -28,13 +28,13 @@ CREATE TABLE tradingPools(
 		FOREIGN KEY(algorithmID) REFERENCES algorithms(algorithmID)
 		);
 
-	CREATE TABLE tradingPoolCoinData(
-			tradingPoolCoinDataID PRIMARY KEY,
-			tradingPoolID INTEGER NOT NULL,
-			coinID varchar(10) NOT NULL,
-			coinAmount INTEGER NOT NULL,
-			FOREIGN KEY(tradingPoolID) REFERENCES tradingPools(tradingPoolID),
-			);
+CREATE TABLE tradingPoolCoinData(
+		tradingPoolCoinDataID PRIMARY KEY,
+		tradingPoolID INTEGER NOT NULL,
+		coinID text NOT NULL,
+		coinAmount INTEGER NOT NULL,
+		FOREIGN KEY(tradingPoolID) REFERENCES tradingPools(tradingPoolID)
+		);
 
 CREATE TABLE tradingPoolUserData(
 		tradingPoolUserDataID PRIMARY KEY,
@@ -45,13 +45,13 @@ CREATE TABLE tradingPoolUserData(
 		FOREIGN KEY(userID) REFERENCES userData(userID)
 		);
 
-	CREATE TABLE trades(
-			tradeID PRIMARY KEY,
-			tradingPoolID INTEGER NOT NULL,
-			coinFrom varchar(10) NOT NULL,
-			coinTo varchar(10) NOT NULL,
-			amount REAL NOT NULL,
-			exchangeID varchar(10) NOT NULL,
-			completed INTEGER NOT NULL,
-			FOREIGN KEY(tradingPoolID) REFERENCES tradingPools(tradingPoolID),
-			);
+CREATE TABLE trades(
+		tradeID PRIMARY KEY,
+		tradingPoolID INTEGER NOT NULL,
+		coinFrom text NOT NULL,
+		coinTo text NOT NULL,
+		amount REAL NOT NULL,
+		exchangeID text NOT NULL,
+		completed INTEGER NOT NULL,
+		FOREIGN KEY(tradingPoolID) REFERENCES tradingPools(tradingPoolID)
+		);
