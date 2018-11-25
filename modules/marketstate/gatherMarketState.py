@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-from marketstate.CurrentPrice import *
+from CurrentPrice import *
 from db.database import *
 
 
