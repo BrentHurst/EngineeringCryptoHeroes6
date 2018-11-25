@@ -13,8 +13,9 @@ def gatherMarketState():
             for sym in symbols:
                 symusd = sym + 'USD'
                 curprice = GetCurPrice(symusd,ex)
-                print(sym,ex,curprice)
-                # db.updateMarketState(sym,ex,curprice)
+                db.updateMarketState(sym,ex,curprice)
+
+
 
 if __name__ == "__main__":
     gatherMarketState()

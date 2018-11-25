@@ -30,4 +30,4 @@ class coindb():
 
     def updateMarketState(self,coinID,exchangeID,value):
         c = self.connection.cursor()
-        c.execute('insert into cryptoData (coinID,exchangeID,value,timestamp) values (?,?,?,CURRENT_TIMESTAMP)',coinID,exchangeID,value)
+        c.execute("insert into cryptoData values (?, ?, ?, CURRENT_TIMESTAMP)",(coinID,exchangeID,value))
