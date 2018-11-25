@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 
 import sqlite3
+import os
 
 class coindb():
     def __init__(self, name="ech6.db"):
@@ -15,7 +16,10 @@ class coindb():
         self.connection.close()
         return True
 
-    def construct(self, filename="createDB.sqlite"):
+    def construct(self, filename=""):
+        dir_path = os.path.dirname(os.path.realpath(__file__))
+        if not filename:
+            filename = os.path.join(dir_path, "createDB.sqlite")
 
         c = self.connection.cursor()
 
