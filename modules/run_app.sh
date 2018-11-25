@@ -10,8 +10,6 @@ abort()
 
 trap 'abort' 0
 
-set -e
-
 if [ $# -eq 1 ] && [ "$1" = "clean" ]; then
 	abort
 fi

@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-from database import *
+from db.database import *
 
 
 def maketrades():

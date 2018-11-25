@@ -7,6 +7,9 @@ nc:
 run: rm
 	docker run --name ech -d -p 80:5000 ech6:latest
 
+runa: rm
+	docker run --name ech -p 80:5000 ech6:latest
+
 rm:
 	@docker kill ech >/dev/null 2>/dev/null || true 
 	@docker rm ech >/dev/null 2>/dev/null || true 
