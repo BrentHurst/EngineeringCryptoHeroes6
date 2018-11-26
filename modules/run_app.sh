@@ -14,6 +14,7 @@ if [ $# -eq 1 ] && [ "$1" = "clean" ]; then
 	abort
 fi
 
+rm -f ech6.db
 db/createDB.py
 
 cd web
@@ -25,7 +26,7 @@ while true; do
 	marketstate/gatherMarketState.py
 	trades/calculateTrades.py
 	trades/makeTrades.py
-	sleep 3600
+	sleep 1h
 done
 
 	

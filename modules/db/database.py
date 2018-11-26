@@ -11,6 +11,8 @@ class coindb():
         return self
 
     def __exit__(self, type, value, traceback):
+        if value is not None:
+            raise value
         self.connection.commit()
         self.connection.close()
         return True
@@ -37,6 +39,7 @@ class coindb():
         return c.execute("select rowid, * from trades where completed = 0").fetchall()
 
     def getCurrentValue(self,coin,exchange):
+        if coin == "USD": return 1
         c = self.connection.cursor()
         return c.execute("select value from cryptoData where coinID=? and exchangeID=? order by timestamp desc limit 1",(coin,exchange)).fetchall()[0][0]
 
@@ -50,7 +53,7 @@ class coindb():
         c.execute("update tradingPoolCoinData set coinAmount = (coinAmount + (? / ?)) where tradingPoolID = ? and coinID = ?",(amount,coinToVal,tradePoolID,coinTo))
 
         exchanges = ['gdax','bitstamp','binance']
-        d = {'BTC':-1,'LTC':-1,'ETH':-1}
+        d = {'BTC':-1,'LTC':-1,'ETH':-1,'USD':-1}
         for key in d:
             for ex in exchanges:
                 val = self.getCurrentValue(key,ex)
@@ -64,3 +67,18 @@ class coindb():
             s += d[coin] * coinamt
 
         c.execute("update tradingPools set value = ? where rowid = ?",(s,tradePoolID))
+
+    def getPools(self):
+        c = self.connection.cursor()
+        return c.execute("select rowid, * from tradingPools").fetchall()
+
+    def getAlgorithmByID(self, algorithmID):
+        c = self.connection.cursor()
+        return c.execute("select rowid, * from algorithms where rowid = ?", (algorithmID,)).fetchone()
+
+    def getPoolCoins(self, poolID):
+        c = self.connection.cursor()
+        coins = c.execute("select rowid, * from tradingPoolCoinData").fetchall()
+        return { coinID : coinAmount for _, coinID, coinAmount in coins }
+
+
