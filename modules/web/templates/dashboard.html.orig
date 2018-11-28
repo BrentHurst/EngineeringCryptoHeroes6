@@ -371,7 +371,11 @@
                   </thead>
                   <tbody>
                   <tr>
+<<<<<<< HEAD
                     <td><a href="strategies">Simple Moving Averages</a></td>
+=======
+                    <td><a href="strategies">Simple Moving Average</a></td>
+>>>>>>> 0ee688e4e5f60502fd9a0e8a56c97a0f6c393d6a
                     <td><span class="label label-success">low risk</span></td>
                     <td>
                       $money
