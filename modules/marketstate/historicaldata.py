@@ -33,4 +33,20 @@ def HistoricalLitecoinPrice():
     return ____GetTheJson('LTCUSD')
 
 if __name__ == "__main__":
-    print("Why did you run this file?")
+    import sys
+    if len(sys.argv) == 0:
+        print("Usage: historicaldata.py [eth btc ltc]")
+        sys.exit(1)
+
+    for arg in sys.argv:
+        if arg == "eth":
+            with open("eth.csv", "w") as f:
+                f.write(____GetTheJson("ETHUSD"))
+
+        if arg == "btc":
+            with open("btc.csv", "w") as f:
+                f.write(____GetTheJson("BTCUSD"))
+
+        if arg == "ltc":
+            with open("ltc.csv", "w") as f:
+                f.write(____GetTheJson("LTCUSD"))

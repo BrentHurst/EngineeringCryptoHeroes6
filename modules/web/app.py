@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 import os
 from flask import *
+from db.database import *
 
 app = Flask(__name__, static_url_path='/static')
 
@@ -10,7 +11,9 @@ def index():
 
 @app.route('/dashboard')
 def dashboard():
-    return render_template("dashboard.html")
+    with coindb("../ech6.db") as db:
+        bitcoin_value = db.getCurrentValue("BTC", "gdax")
+    return render_template("dashboard.html", bitcoin_value=bitcoin_value)
 
 @app.route('/strategies')
 def strategies():
